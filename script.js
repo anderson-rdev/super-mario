@@ -7,6 +7,8 @@ let sound = document.getElementById("coinSound");
 let posX = 50;
 let score = 0;
 
+console.log("Jogo do Mario iniciado!");
+
 function iniciarJogo() {
     alert("🍄 Bem-vindo ao jogo do Mario!");
 
