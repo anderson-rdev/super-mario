@@ -1,21 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Game JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>🍄 Mario JS Game</h1>
-    <p>Pontuação: <span id="score">0</span></p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <h1 class="game-title">🍄 Mario JS</h1>
+        </div>
+        <div class="header-right">
+            <button id="themeToggle" class="btn btn-theme" onclick="alternarTema()">
+                <span id="themeIcon">🌙</span>
+                <span id="themeLabel">Modo Escuro</span>
+            </button>
+        </div>
+    </header>
 
-    <button onclick="iniciarJogo()">Iniciar</button>
+    <!-- PLAYER IDENTIFICATION -->
+    <section class="player-section">
+        <div class="player-card">
+            <p class="player-label">👤 Identificação do Jogador</p>
+            <div class="input-row">
+                <input
+                    type="text"
+                    id="playerName"
+                    class="name-input"
+                    placeholder="Digite seu nome..."
+                    maxlength="20"
+                    onkeydown="teclaEnter(event)"
+                />
+                <button class="btn btn-primary" onclick="identificarJogador()">Entrar</button>
+            </div>
+            <div id="welcomeMsg" class="welcome-msg hidden"></div>
+        </div>
+    </section>
 
-    <div id="game">
-        <div id="mario">🍄</div>
-        <div id="coin">🪙</div>
-        <div id="enemy">👾</div>
+    <!-- SCORE & CONTROLS -->
+    <section class="hud">
+        <div class="hud-item">
+            <span class="hud-label">PONTUAÇÃO</span>
+            <span id="score" class="hud-value">0</span>
+        </div>
+        <div class="hud-item">
+            <span class="hud-label">JOGADOR</span>
+            <span id="playerDisplay" class="hud-value">---</span>
+        </div>
+        <div class="hud-item">
+            <span class="hud-label">STATUS</span>
+            <span id="gameStatus" class="hud-value status-idle">PARADO</span>
+        </div>
+    </section>
+
+    <!-- GAME AREA -->
+    <div class="game-wrapper">
+        <div id="game">
+            <div id="mario">🍄</div>
+            <div id="coin">🪙</div>
+            <div id="enemy">👾</div>
+        </div>
+        <div class="controls-hint">
+            <span>⬅ Esquerda</span>
+            <span>➡ Direita</span>
+            <span>🍄 Pegue moedas</span>
+            <span>👾 Evite inimigos</span>
+        </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+        <button class="btn btn-start" onclick="iniciarJogo()">▶ Iniciar Jogo</button>
+        <button class="btn btn-reset" onclick="reiniciarJogo()">↺ Reiniciar</button>
     </div>
 
     <audio id="coinSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
